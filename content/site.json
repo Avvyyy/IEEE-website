@@ -1,0 +1,22 @@
+{
+  "branchName": "IEEE Babcock University Student Branch",
+  "shortName": "IEEE Babcock SB",
+  "tagline": "Engineering Tomorrow, Together.",
+  "aboutSnippet": "IEEE Babcock University Student Branch is a community of engineers, technologists, and innovators at Babcock University, driving hands-on learning, research, and technical excellence across Region 8. [PLACEHOLDER COPY — replace with final branch bio]",
+  "founded": 2016,
+  "region": "Region 8",
+  "email": "sb-babcock@ieee.org",
+  "location": "Babcock University, Ilishan-Remo, Ogun State, Nigeria",
+  "joinLink": "https://www.ieee.org/membership/join/index.html",
+  "socials": {
+    "linkedin": "https://www.linkedin.com/company/ieee-babcock-sb",
+    "instagram": "https://www.instagram.com/ieeebabcocksb",
+    "twitter": "https://twitter.com/ieeebabcocksb"
+  },
+  "heroImages": [
+    "/images/placeholder-hero-1.svg",
+    "/images/placeholder-hero-2.svg",
+    "/images/placeholder-hero-3.svg"
+  ],
+  "vtoolsUrl": "https://events.vtools.ieee.org/"
+}

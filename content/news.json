@@ -1,0 +1,26 @@
+[
+  {
+    "id": "news-1",
+    "title": "IEEE Babcock SB Announces AXIS Congress 2026",
+    "excerpt": "Registration is now open for the branch's flagship annual technology congress. [PLACEHOLDER]",
+    "date": "2026-07-15",
+    "url": "https://www.linkedin.com/",
+    "image": "/images/placeholder-news-1.svg"
+  },
+  {
+    "id": "news-2",
+    "title": "Branch Members Place Top 3 in Regional CTF",
+    "excerpt": "The cybersecurity team represented IEEE Babcock SB at a Region 8 capture-the-flag competition. [PLACEHOLDER]",
+    "date": "2026-06-02",
+    "url": "https://medium.com/",
+    "image": "/images/placeholder-news-2.svg"
+  },
+  {
+    "id": "news-3",
+    "title": "GhostCipher AI Featured in Student Innovation Showcase",
+    "excerpt": "Our flagship AI project was recognized at the university-wide innovation showcase. [PLACEHOLDER]",
+    "date": "2026-05-10",
+    "url": "https://medium.com/",
+    "image": "/images/placeholder-news-3.svg"
+  }
+]

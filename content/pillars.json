@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cybersecurity",
+    "title": "Cybersecurity",
+    "description": "Ethical hacking, network defense, and security research through hands-on labs and CTFs.",
+    "icon": "ShieldCheck"
+  },
+  {
+    "id": "ai",
+    "title": "Artificial Intelligence",
+    "description": "Machine learning, computer vision, and applied AI projects solving real-world problems.",
+    "icon": "BrainCircuit"
+  },
+  {
+    "id": "embedded",
+    "title": "Embedded Systems",
+    "description": "IoT, robotics, and hardware-software integration for smart devices and automation.",
+    "icon": "Cpu"
+  },
+  {
+    "id": "networking",
+    "title": "Networking",
+    "description": "Cloud infrastructure, systems administration, and modern networking technologies.",
+    "icon": "Network"
+  }
+]

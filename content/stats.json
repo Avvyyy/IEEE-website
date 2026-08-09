@@ -1,0 +1,26 @@
+[
+  {
+    "id": "members",
+    "label": "Members",
+    "value": 150,
+    "suffix": "+"
+  },
+  {
+    "id": "events",
+    "label": "Events Held",
+    "value": 40,
+    "suffix": "+"
+  },
+  {
+    "id": "founded",
+    "label": "Founded",
+    "value": 2016,
+    "suffix": ""
+  },
+  {
+    "id": "region",
+    "label": "Region",
+    "value": 8,
+    "suffix": ""
+  }
+]

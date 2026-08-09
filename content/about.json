@@ -1,0 +1,17 @@
+{
+  "history": "IEEE Babcock University Student Branch was chartered in 2016 to bring the global IEEE community to Babcock University students. Since then, the branch has grown into one of the most active technical student organizations on campus, running annual flagship events like AXIS Congress and Tethered. [PLACEHOLDER — replace with verified branch history and milestones]",
+  "ieeeContext": "IEEE (Institute of Electrical and Electronics Engineers) is the world's largest technical professional organization, dedicated to advancing technology for the benefit of humanity. With members across more than 160 countries, IEEE provides resources, publications, standards, and community for engineers and technologists at every career stage.",
+  "mission": "To empower Babcock University students with the technical skills, professional network, and hands-on experience needed to become industry-ready engineers and innovators.",
+  "vision": "To be the leading student-driven technical community in Region 8, recognized for excellence in innovation, leadership, and service.",
+  "values": ["Innovation", "Integrity", "Collaboration", "Excellence", "Service"],
+  "advisor": {
+    "name": "Faculty Advisor Name",
+    "title": "Faculty Counselor, IEEE Babcock SB [PLACEHOLDER]",
+    "photo": "/images/placeholder-avatar-advisor.svg",
+    "bio": "The branch's faculty counselor provides guidance and institutional support, connecting student leadership with the wider Babcock University engineering faculty. [PLACEHOLDER BIO]"
+  },
+  "awards": [
+    { "id": "award-1", "title": "Outstanding Student Branch Award", "year": "2025", "description": "Recognized by IEEE Region 8 for exceptional branch activity. [PLACEHOLDER]" },
+    { "id": "award-2", "title": "Best Technical Event — AXIS Congress", "year": "2025", "description": "Awarded for the branch's flagship congress. [PLACEHOLDER]" }
+  ]
+}

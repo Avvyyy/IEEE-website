@@ -1,0 +1,69 @@
+[
+  {
+    "id": "chair",
+    "name": "Kasie Umahi",
+    "role": "Chair",
+    "category": "Executive",
+    "photo": "/images/placeholder-avatar-1.svg",
+    "bio": "Leads the branch's strategic direction and represents IEEE Babcock SB to IEEE Region 8. [PLACEHOLDER BIO]",
+    "linkedin": "https://www.linkedin.com/",
+    "featured": true
+  },
+  {
+    "id": "vice-chair",
+    "name": "Member Name",
+    "role": "Vice Chair",
+    "category": "Executive",
+    "photo": "/images/placeholder-avatar-2.svg",
+    "bio": "Supports branch operations and coordinates technical committees. [PLACEHOLDER BIO]",
+    "linkedin": "https://www.linkedin.com/",
+    "featured": true
+  },
+  {
+    "id": "secretary",
+    "name": "Member Name",
+    "role": "Secretary",
+    "category": "Executive",
+    "photo": "/images/placeholder-avatar-3.svg",
+    "bio": "Manages branch records, correspondence, and vTools administration. [PLACEHOLDER BIO]",
+    "linkedin": "https://www.linkedin.com/",
+    "featured": true
+  },
+  {
+    "id": "treasurer",
+    "name": "Member Name",
+    "role": "Treasurer",
+    "category": "Executive",
+    "photo": "/images/placeholder-avatar-4.svg",
+    "bio": "Oversees branch finances, budgeting, and sponsorships. [PLACEHOLDER BIO]",
+    "linkedin": "https://www.linkedin.com/",
+    "featured": true
+  },
+  {
+    "id": "tech-lead",
+    "name": "Member Name",
+    "role": "Technical Lead",
+    "category": "Technical",
+    "photo": "/images/placeholder-avatar-5.svg",
+    "bio": "Leads technical workshops, CTFs, and project mentorship. [PLACEHOLDER BIO]",
+    "linkedin": "https://www.linkedin.com/"
+  },
+  {
+    "id": "creative-lead",
+    "name": "Member Name",
+    "role": "Creative Director",
+    "category": "Creative",
+    "photo": "/images/placeholder-avatar-6.svg",
+    "bio": "Owns branch visual identity, design, and media production. [PLACEHOLDER BIO]",
+    "linkedin": "https://www.linkedin.com/"
+  },
+  {
+    "id": "outreach-lead",
+    "name": "Member Name",
+    "role": "Outreach Coordinator",
+    "category": "Outreach",
+    "photo": "/images/placeholder-avatar-7.svg",
+    "bio": "Builds partnerships with sponsors, alumni, and other student organizations. [PLACEHOLDER BIO]",
+    "linkedin": "https://www.linkedin.com/"
+  }
+]

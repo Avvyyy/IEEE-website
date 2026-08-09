@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ghostcipher-ai",
+    "title": "GhostCipher AI",
+    "team": "IEEE Babcock Cybersecurity & AI Team",
+    "description": "An AI-powered steganography and encryption toolkit that detects hidden payloads in media files and flags anomalous encoding patterns. [PLACEHOLDER — replace with final project description]",
+    "tech": ["Python", "TensorFlow", "OpenCV", "Flask"],
+    "github": "https://github.com/",
+    "demo": "",
+    "image": "/images/placeholder-project-1.svg"
+  },
+  {
+    "id": "campus-connect",
+    "title": "CampusConnect",
+    "team": "IEEE Babcock Networking Team",
+    "description": "A campus-wide event and resource discovery platform for Babcock University students. [PLACEHOLDER]",
+    "tech": ["Next.js", "PostgreSQL", "Tailwind CSS"],
+    "github": "https://github.com/",
+    "demo": "",
+    "image": "/images/placeholder-project-2.svg"
+  },
+  {
+    "id": "smart-attend",
+    "title": "SmartAttend",
+    "team": "IEEE Babcock Embedded Systems Team",
+    "description": "An RFID and facial-recognition-based attendance system for lecture halls and lab sessions. [PLACEHOLDER]",
+    "tech": ["Arduino", "Python", "OpenCV"],
+    "github": "https://github.com/",
+    "demo": "",
+    "image": "/images/placeholder-project-3.svg"
+  }
+]
