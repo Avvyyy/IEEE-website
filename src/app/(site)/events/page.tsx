@@ -12,6 +12,7 @@ import { getEvents, getSiteConfig } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Events",
   description: "Upcoming and past events hosted by IEEE Babcock University Student Branch.",
+  alternates: { canonical: "/events" },
 };
 
 export default async function EventsPage() {

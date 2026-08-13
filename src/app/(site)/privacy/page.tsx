@@ -4,6 +4,7 @@ import { getSiteConfig } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
+  alternates: { canonical: "/privacy" },
 };
 
 export default async function PrivacyPage() {

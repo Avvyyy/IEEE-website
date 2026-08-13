@@ -46,140 +46,142 @@ export function Navbar({ site }: { site: SiteConfig }) {
   }, [open]);
 
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled || open
-          ? "bg-deep/90 backdrop-blur-md border-b border-white/10 shadow-lg"
-          : "bg-transparent"
-      )}
-    >
-      <nav className="container-page flex items-center justify-between h-18 py-3">
-        <Link href="/" className="flex items-center gap-2 shrink-0" aria-label={`${site.shortName} home`}>
-          <Image
-            src="/images/logo-ieee-babcock.svg"
-            alt={`${site.shortName} logo`}
-            width={160}
-            height={40}
-            priority
-            className="h-9 w-auto"
-          />
-        </Link>
-
-        <ul className="hidden lg:flex items-center gap-1">
-          {NAV_LINKS.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "relative px-4 py-2 text-sm font-medium rounded-full transition-colors",
-                    active ? "text-white" : "text-body hover:text-white"
-                  )}
-                >
-                  {active && (
-                    <motion.span
-                      layoutId="nav-active-pill"
-                      className="absolute inset-0 rounded-full bg-white/10"
-                      transition={{ type: "spring", duration: 0.5 }}
-                    />
-                  )}
-                  <span className="relative z-10">{link.label}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        <div className="hidden lg:flex items-center gap-3">
-          <SocialIcons site={site} />
-          <Link
-            href={site.joinLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-2 rounded-full bg-ieee-blue px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-ieee-blue-light"
-          >
-            Join IEEE
+    <header className="fixed top-0 left-0 right-0 z-50 pt-3 px-4 sm:pt-4 sm:px-6">
+      <div
+        className={cn(
+          "mx-auto max-w-6xl rounded-2xl transition-all duration-300",
+          scrolled || open
+            ? "glass-panel border border-white/10 shadow-xl shadow-black/30"
+            : "bg-transparent border border-transparent"
+        )}
+      >
+        <nav className="flex items-center justify-between h-16 px-4 sm:px-6">
+          <Link href="/" className="flex items-center gap-2 shrink-0" aria-label={`${site.shortName} home`}>
+            <Image
+              src="/images/logo-ieee-babcock.svg"
+              alt={`${site.shortName} logo`}
+              width={160}
+              height={40}
+              priority
+              className="h-9 w-auto"
+            />
           </Link>
-        </div>
 
-        <button
-          type="button"
-          className="lg:hidden relative z-10 flex h-10 w-10 items-center justify-center text-white"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            {open ? (
-              <motion.span
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <X size={26} />
-              </motion.span>
-            ) : (
-              <motion.span
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Menu size={26} />
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </button>
-      </nav>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden overflow-hidden border-t border-white/10 bg-deep/95 backdrop-blur-md"
-          >
-            <ul className="container-page flex flex-col py-4">
-              {NAV_LINKS.map((link, i) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04 }}
-                >
+          <ul className="hidden lg:flex items-center gap-1">
+            {NAV_LINKS.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className={cn(
-                      "block py-3 text-lg font-medium border-b border-white/5",
-                      pathname === link.href ? "text-white" : "text-body hover:text-white"
+                      "relative px-4 py-2 text-sm font-medium rounded-full transition-colors",
+                      active ? "text-white" : "text-body hover:text-white"
                     )}
                   >
-                    {link.label}
+                    {active && (
+                      <motion.span
+                        layoutId="nav-active-pill"
+                        className="absolute inset-0 rounded-full bg-white/10"
+                        transition={{ type: "spring", duration: 0.5 }}
+                      />
+                    )}
+                    <span className="relative z-10">{link.label}</span>
                   </Link>
-                </motion.li>
-              ))}
-            </ul>
-            <div className="container-page flex items-center justify-between pb-6">
-              <SocialIcons site={site} />
-              <Link
-                href={site.joinLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full bg-ieee-blue px-5 py-2 text-sm font-semibold text-white"
-              >
-                Join IEEE
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="hidden lg:flex items-center gap-3">
+            <SocialIcons site={site} />
+            <Link
+              href={site.joinLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 rounded-full bg-ieee-blue px-5 py-2 text-sm font-semibold text-white shadow-md shadow-ieee-blue/20 transition-all hover:bg-ieee-blue-light hover:shadow-ieee-blue/40"
+            >
+              Join IEEE
+            </Link>
+          </div>
+
+          <button
+            type="button"
+            className="lg:hidden relative z-10 flex h-10 w-10 items-center justify-center text-white"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {open ? (
+                <motion.span
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={26} />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu size={26} />
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </button>
+        </nav>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="lg:hidden overflow-hidden border-t border-white/10"
+            >
+              <ul className="flex flex-col px-4 py-4 sm:px-6">
+                {NAV_LINKS.map((link, i) => (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, x: -16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.04 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "block py-3 text-lg font-medium border-b border-white/5",
+                        pathname === link.href ? "text-white" : "text-body hover:text-white"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+              <div className="flex items-center justify-between px-4 pb-6 sm:px-6">
+                <SocialIcons site={site} />
+                <Link
+                  href={site.joinLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-ieee-blue px-5 py-2 text-sm font-semibold text-white"
+                >
+                  Join IEEE
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </header>
   );
 }

@@ -9,6 +9,7 @@ import type { TeamMember } from "@/lib/types";
 export const metadata: Metadata = {
   title: "Team",
   description: "Meet the executives and committee leads of IEEE Babcock University Student Branch.",
+  alternates: { canonical: "/team" },
 };
 
 const CATEGORY_ORDER: TeamMember["category"][] = ["Executive", "Technical", "Creative", "Outreach"];

@@ -10,6 +10,7 @@ import { getProjects } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Projects",
   description: "Technical projects built by IEEE Babcock University Student Branch members, including GhostCipher AI.",
+  alternates: { canonical: "/projects" },
 };
 
 export default async function ProjectsPage() {

@@ -9,6 +9,7 @@ import { getAbout, getSiteConfig, getTeam } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About",
   description: "Learn about IEEE Babcock University Student Branch — our history, mission, vision, and leadership.",
+  alternates: { canonical: "/about" },
 };
 
 export default async function AboutPage() {

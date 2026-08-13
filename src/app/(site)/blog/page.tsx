@@ -10,6 +10,7 @@ import { getNews } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Blog & News",
   description: "Technical articles, event recaps, and updates from IEEE Babcock University Student Branch.",
+  alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage() {

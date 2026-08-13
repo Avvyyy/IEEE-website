@@ -10,6 +10,7 @@ import { getSiteConfig } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Get in touch with IEEE Babcock University Student Branch.",
+  alternates: { canonical: "/contact" },
 };
 
 export default async function ContactPage() {

@@ -4,6 +4,7 @@ import { getSiteConfig } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
+  alternates: { canonical: "/terms" },
 };
 
 export default async function TermsPage() {

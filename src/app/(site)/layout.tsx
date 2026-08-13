@@ -11,7 +11,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   return (
     <>
       <Navbar site={site} />
-      <main className="flex-1 pt-18">{children}</main>
+      <main className="flex-1 pt-20 sm:pt-24">{children}</main>
       <Footer site={site} nextEvent={nextEvent} />
     </>
   );

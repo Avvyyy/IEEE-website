@@ -41,6 +41,14 @@ export function Hero({ site }: { site: SiteConfig }) {
       <div className="absolute inset-0 bg-gradient-to-b from-deep/70 via-deep/60 to-deep" />
       <div className="absolute inset-0 bg-gradient-to-r from-deep/80 via-deep/20 to-transparent" />
 
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div className="glow-orb glow-orb-blue h-[28rem] w-[28rem] top-1/4 -left-20 opacity-30 animate-glow-pulse" />
+        <div
+          className="glow-orb glow-orb-gold h-[22rem] w-[22rem] bottom-0 right-0 opacity-20 animate-glow-pulse"
+          style={{ animationDelay: "-3s" }}
+        />
+      </div>
+
       <div className="relative z-10 h-full container-page flex flex-col justify-center">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -77,7 +85,7 @@ export function Hero({ site }: { site: SiteConfig }) {
             href={site.joinLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-ieee-blue px-8 py-4 text-base font-semibold text-white shadow-lg shadow-ieee-blue/30 transition-all hover:bg-ieee-blue-light active:scale-95"
+            className="inline-flex items-center gap-2 rounded-full bg-ieee-blue px-8 py-4 text-base font-semibold text-white shadow-lg shadow-ieee-blue/30 transition-all hover:bg-ieee-blue-light hover:shadow-xl hover:shadow-ieee-blue/50 hover:-translate-y-0.5 active:scale-95"
           >
             Join IEEE
             <ChevronRight size={18} />

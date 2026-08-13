@@ -8,6 +8,7 @@ import { getAxis } from "@/lib/content";
 export const metadata: Metadata = {
   title: "AXIS Congress",
   description: "AXIS Congress — IEEE Babcock Student Branch's flagship annual technology congress.",
+  alternates: { canonical: "/axis-congress" },
 };
 
 export default async function AxisCongressPage() {

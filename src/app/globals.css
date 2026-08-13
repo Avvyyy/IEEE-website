@@ -30,6 +30,9 @@
   --animate-fade-up: fade-up 0.7s ease-out both;
   --animate-fade-in: fade-in 0.7s ease-out both;
   --animate-marquee: marquee 30s linear infinite;
+  --animate-glow-pulse: glow-pulse 6s ease-in-out infinite;
+  --animate-gradient-shift: gradient-shift 6s ease infinite;
+  --animate-drift: drift 18s ease-in-out infinite;
 
   @keyframes fade-up {
     from {
@@ -55,6 +58,35 @@
     }
     to {
       transform: translateX(-50%);
+    }
+  }
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.08);
+    }
+  }
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(3%, -4%);
     }
   }
 }
@@ -109,10 +141,12 @@ select:focus-visible {
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #ffffff 0%, #9ec7ec 100%);
+  background: linear-gradient(90deg, #ffffff 0%, #9ec7ec 50%, #ffffff 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: var(--animate-gradient-shift);
 }
 
 .scrollbar-none::-webkit-scrollbar {
@@ -121,4 +155,36 @@ select:focus-visible {
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Ambient glow orbs — soft blurred radial blobs used behind hero/section content
+   for depth, echoing wearebucc.org's gradient-glow-over-black aesthetic while
+   staying on the IEEE blue/gold palette. */
+.glow-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.glow-orb-blue {
+  background: radial-gradient(circle, var(--color-ieee-blue-light) 0%, transparent 70%);
+}
+
+.glow-orb-gold {
+  background: radial-gradient(circle, var(--color-accent-gold) 0%, transparent 70%);
+}
+
+.glass-panel {
+  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-orb,
+  .text-gradient {
+    animation: none !important;
+  }
 }
