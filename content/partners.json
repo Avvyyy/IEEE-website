@@ -1,6 +1,0 @@
-[
-  { "id": "ieee", "name": "IEEE", "logo": "/images/placeholder-logo-ieee.svg", "url": "https://www.ieee.org" },
-  { "id": "babcock", "name": "Babcock University", "logo": "/images/placeholder-logo-babcock.svg", "url": "https://babcock.edu.ng" },
-  { "id": "bucc", "name": "BUCC", "logo": "/images/placeholder-logo-bucc.svg", "url": "" },
-  { "id": "gdg", "name": "Google Developer Groups Babcock", "logo": "/images/placeholder-logo-gdg.svg", "url": "" }
-]

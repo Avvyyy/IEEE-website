@@ -1,3 +1,5 @@
+import { supabase } from "./supabase";
+
 const SESSION_COOKIE = "ieee_admin_session";
 const SESSION_TTL_MS = 1000 * 60 * 60 * 8; // 8 hours
 
@@ -60,14 +62,17 @@ export async function verifySessionToken(token: string | undefined | null): Prom
   }
 }
 
-export function verifyPassword(input: string): boolean {
-  const expected = process.env.ADMIN_PASSWORD;
-  if (!expected) {
-    throw new Error(
-      "ADMIN_PASSWORD is not set. Add it to your .env.local before using the admin dashboard."
-    );
-  }
-  return input === expected;
+/**
+ * Verify admin credentials against Supabase Auth.
+ * Returns null on success, or an error message string on failure.
+ */
+export async function signInWithEmailPassword(
+  email: string,
+  password: string
+): Promise<string | null> {
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  if (error) return error.message;
+  return null;
 }
 
 export const ADMIN_SESSION_COOKIE = SESSION_COOKIE;

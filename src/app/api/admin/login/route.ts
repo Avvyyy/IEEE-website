@@ -1,27 +1,24 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ADMIN_SESSION_COOKIE, createSessionToken, verifyPassword } from "@/lib/auth";
+import { ADMIN_SESSION_COOKIE, createSessionToken, signInWithEmailPassword } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
+  let email: string;
   let password: string;
   try {
     const body = await request.json();
+    email = body.email ?? "";
     password = body.password ?? "";
   } catch {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  let isValid: boolean;
-  try {
-    isValid = verifyPassword(password);
-  } catch (err) {
-    return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Server misconfigured" },
-      { status: 500 }
-    );
+  if (!email || !password) {
+    return NextResponse.json({ error: "Email and password are required" }, { status: 400 });
   }
 
-  if (!isValid) {
-    return NextResponse.json({ error: "Incorrect password" }, { status: 401 });
+  const authError = await signInWithEmailPassword(email, password);
+  if (authError) {
+    return NextResponse.json({ error: "Invalid email or password" }, { status: 401 });
   }
 
   const token = await createSessionToken();

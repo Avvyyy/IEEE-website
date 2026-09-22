@@ -53,6 +53,7 @@ export interface TeamMember {
   photo: string;
   bio: string;
   linkedin?: string;
+  session: string;
   featured?: boolean;
 }
 
@@ -97,13 +98,45 @@ export interface AxisScheduleItem {
   speaker?: string;
 }
 
+export interface CongressDay {
+  label: string;
+  date: string;
+  time: string;
+  venue: string;
+}
+
+export interface AxisIgniteWebinar {
+  id: string;
+  week: number;
+  title: string;
+  date: string;
+  time: string;
+  speaker: string;
+  speakerTitle: string;
+  speakerBio?: string;
+  speakerImage?: string;
+  description: string;
+}
+
+export interface AxisIgniteProgram {
+  title: string;
+  tagline: string;
+  description: string;
+  bannerImage: string;
+  webinars: AxisIgniteWebinar[];
+}
+
 export interface AxisContent {
   theme: string;
   date: string;
+  endDate?: string;
   venue: string;
   description: string;
   bannerImage: string;
+  flierUrl?: string;
+  ignite: AxisIgniteProgram;
   registrationUrl: string;
+  days: CongressDay[];
   speakers: AxisSpeaker[];
   schedule: AxisScheduleItem[];
   sponsors: Partner[];
@@ -146,8 +179,8 @@ export type ContentType =
   | "pillars"
   | "events"
   | "team"
-  | "projects"
   | "partners"
   | "news"
   | "axis"
-  | "about";
+  | "about"
+  | "opportunities";

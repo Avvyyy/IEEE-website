@@ -1,5 +1,10 @@
 import { AdminShell } from "@/components/admin/AdminShell";
+import { ToastProvider } from "@/components/admin/Toast";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  return <AdminShell>{children}</AdminShell>;
+  return (
+    <ToastProvider>
+      <AdminShell>{children}</AdminShell>
+    </ToastProvider>
+  );
 }

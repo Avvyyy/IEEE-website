@@ -82,7 +82,7 @@ export function ContactForm() {
       {status === "success" && (
         <p className="text-accent-gold text-sm">Thanks for reaching out — we&apos;ll be in touch soon.</p>
       )}
-      {status === "error" && <p className="text-red-400 text-sm">{errorMsg}</p>}
+      {status === "error" && <p className="text-ieee-red text-sm">{errorMsg}</p>}
     </form>
   );
 }

@@ -1,13 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --color-ieee-blue: #005fad;
-  --color-ieee-blue-light: #1e88d6;
-  --color-deep: #0a0f1e;
-  --color-surface: #111827;
-  --color-surface-alt: #1e2a3a;
+  /* IEEE Brand Colors — official palette from brand-experience.ieee.org */
+  --color-ieee-blue: #00629B;        /* PMS 3015 C — primary brand */
+  --color-ieee-blue-light: #009CA6;  /* PMS 320C — teal accent */
+  --color-ieee-gold: #FFA300;        /* PMS 137C — bright gold */
+  --color-ieee-gold-dark: #FFC72C;   /* PMS 123C — dark gold */
+  --color-ieee-red: #BA0C2F;         /* PMS 200C — error/danger */
+  --color-ieee-navy: #002855;        /* PMS 295C — dark navy */
+
+  /* Site surface colours — near-black with blue tint */
+  --color-deep: #060d1f;
+  --color-surface: #0c1529;
+  --color-surface-alt: #142038;
   --color-body: #cbd5e1;
-  --color-accent-gold: #f59e0b;
+
+  /* Legacy aliases */
+  --color-accent-gold: var(--color-ieee-gold);
 
   --background: var(--color-deep);
   --foreground: #ffffff;
@@ -19,6 +28,10 @@
 
   --color-ieee-blue: var(--color-ieee-blue);
   --color-ieee-blue-light: var(--color-ieee-blue-light);
+  --color-ieee-gold: var(--color-ieee-gold);
+  --color-ieee-gold-dark: var(--color-ieee-gold-dark);
+  --color-ieee-red: var(--color-ieee-red);
+  --color-ieee-navy: var(--color-ieee-navy);
   --color-deep: var(--color-deep);
   --color-surface: var(--color-surface);
   --color-surface-alt: var(--color-surface-alt);
