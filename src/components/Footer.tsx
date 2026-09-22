@@ -4,15 +4,6 @@ import type { EventItem, SiteConfig } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import { InstagramGlyph, LinkedInGlyph, XGlyph } from "@/components/icons/SocialGlyphs";
 
-const QUICK_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/team", label: "Team" },
-  { href: "/events", label: "Events" },
-  { href: "/axis-congress", label: "AXIS Congress" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-];
-
 export function Footer({
   site,
   nextEvent,
@@ -21,30 +12,16 @@ export function Footer({
   nextEvent?: EventItem;
 }) {
   return (
-    <footer className="border-t border-white/10 bg-surface/40">
-      <div className="container-page py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="border-t border-white/10 bg-surface/40 ">
+      <div className="container-page py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         <div>
           <Image
-            src="/images/logo-ieee-babcock.svg"
+            src="/images/logo-ieee-babcock.png"
             alt={`${site.shortName} logo`}
             width={160}
             height={40}
             className="h-9 w-auto mb-4"
           />
-          <p className="text-sm text-body leading-relaxed">{site.aboutSnippet}</p>
-        </div>
-
-        <div>
-          <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2">
-            {QUICK_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href} className="text-sm text-body hover:text-white transition-colors">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div>

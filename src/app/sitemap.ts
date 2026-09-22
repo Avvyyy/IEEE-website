@@ -8,7 +8,7 @@ const ROUTES = [
   "/team",
   "/events",
   "/axis-congress",
-  "/projects",
+  "/opportunities",
   "/blog",
   "/contact",
   "/privacy",

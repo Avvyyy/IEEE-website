@@ -72,8 +72,7 @@ export function Hero({ site }: { site: SiteConfig }) {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="mt-6 max-w-xl text-lg text-body"
         >
-          {site.branchName} is a community of engineers and innovators building the future,
-          one project at a time.
+          {site.aboutSnippet}
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 24 }}

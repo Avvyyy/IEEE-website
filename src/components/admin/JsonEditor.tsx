@@ -166,7 +166,7 @@ function ArrayField({
             <button
               type="button"
               onClick={() => onChange(value.filter((_, idx) => idx !== i))}
-              className="shrink-0 rounded-lg border border-white/10 p-2 text-body hover:text-red-400 hover:border-red-400/40"
+               className="shrink-0 rounded-lg border border-white/10 p-2 text-body hover:text-ieee-red hover:border-ieee-red/40"
               aria-label="Remove item"
             >
               <Trash2 size={16} />
@@ -191,7 +191,7 @@ function ArrayField({
           <button
             type="button"
             onClick={() => onChange(value.filter((_, idx) => idx !== i))}
-            className="absolute top-3 right-3 rounded-lg border border-white/10 p-1.5 text-body hover:text-red-400 hover:border-red-400/40"
+             className="absolute top-3 right-3 rounded-lg border border-white/10 p-1.5 text-body hover:text-ieee-red hover:border-ieee-red/40"
             aria-label="Remove item"
           >
             <Trash2 size={14} />

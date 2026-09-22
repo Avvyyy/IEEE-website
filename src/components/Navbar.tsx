@@ -3,20 +3,30 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { SiteConfig } from "@/lib/types";
-import { InstagramGlyph, LinkedInGlyph, XGlyph } from "@/components/icons/SocialGlyphs";
 
-const NAV_LINKS = [
+type NavLink =
+  | { href: string; label: string; children?: undefined }
+  | { href: string; label: string; children: { href: string; label: string }[] };
+
+const NAV_LINKS: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/team", label: "Team" },
   { href: "/events", label: "Events" },
-  { href: "/axis-congress", label: "AXIS Congress" },
-  { href: "/projects", label: "Projects" },
+  {
+    href: "/axis-congress",
+    label: "AXIS Congress",
+    children: [
+      { href: "/axis-congress", label: "AXIS Congress" },
+      { href: "/axis-congress/ignite", label: "AXIS Ignite" },
+    ],
+  },
+  { href: "/opportunities", label: "Opportunities" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -58,7 +68,7 @@ export function Navbar({ site }: { site: SiteConfig }) {
         <nav className="flex items-center justify-between h-16 px-4 sm:px-6">
           <Link href="/" className="flex items-center gap-2 shrink-0" aria-label={`${site.shortName} home`}>
             <Image
-              src="/images/logo-ieee-babcock.svg"
+              src="/images/logo-ieee-babcock.png"
               alt={`${site.shortName} logo`}
               width={160}
               height={40}
@@ -69,7 +79,14 @@ export function Navbar({ site }: { site: SiteConfig }) {
 
           <ul className="hidden lg:flex items-center gap-1">
             {NAV_LINKS.map((link) => {
-              const active = pathname === link.href;
+              const active =
+                pathname === link.href ||
+                (link.children?.some((c) => pathname === c.href) ?? false);
+
+              if (link.children) {
+                return <AxisDropdown key={link.href} link={link} pathname={pathname} active={active} />;
+              }
+
               return (
                 <li key={link.href}>
                   <Link
@@ -94,7 +111,6 @@ export function Navbar({ site }: { site: SiteConfig }) {
           </ul>
 
           <div className="hidden lg:flex items-center gap-3">
-            <SocialIcons site={site} />
             <Link
               href={site.joinLink}
               target="_blank"
@@ -148,27 +164,49 @@ export function Navbar({ site }: { site: SiteConfig }) {
               className="lg:hidden overflow-hidden border-t border-white/10"
             >
               <ul className="flex flex-col px-4 py-4 sm:px-6">
-                {NAV_LINKS.map((link, i) => (
-                  <motion.li
-                    key={link.href}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.04 }}
-                  >
-                    <Link
-                      href={link.href}
-                      className={cn(
-                        "block py-3 text-lg font-medium border-b border-white/5",
-                        pathname === link.href ? "text-white" : "text-body hover:text-white"
-                      )}
+                {NAV_LINKS.flatMap((link, i) => {
+                  if (link.children) {
+                    return link.children.map((child, j) => (
+                      <motion.li
+                        key={child.href}
+                        initial={{ opacity: 0, x: -16 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: (i + j) * 0.04 }}
+                      >
+                        <Link
+                          href={child.href}
+                          className={cn(
+                            "block py-3 text-lg font-medium border-b border-white/5",
+                            j > 0 && "pl-4 text-base text-body/80",
+                            pathname === child.href ? "text-white" : "hover:text-white"
+                          )}
+                        >
+                          {j === 0 ? child.label : `↳ ${child.label}`}
+                        </Link>
+                      </motion.li>
+                    ));
+                  }
+                  return [
+                    <motion.li
+                      key={link.href}
+                      initial={{ opacity: 0, x: -16 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.04 }}
                     >
-                      {link.label}
-                    </Link>
-                  </motion.li>
-                ))}
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "block py-3 text-lg font-medium border-b border-white/5",
+                          pathname === link.href ? "text-white" : "text-body hover:text-white"
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    </motion.li>,
+                  ];
+                })}
               </ul>
               <div className="flex items-center justify-between px-4 pb-6 sm:px-6">
-                <SocialIcons site={site} />
                 <Link
                   href={site.joinLink}
                   target="_blank"
@@ -186,18 +224,87 @@ export function Navbar({ site }: { site: SiteConfig }) {
   );
 }
 
-function SocialIcons({ site }: { site: SiteConfig }) {
+/* ------------------------------------------------------------------ */
+/*  AXIS dropdown — desktop only                                       */
+/* ------------------------------------------------------------------ */
+function AxisDropdown({
+  link,
+  pathname,
+  active,
+}: {
+  link: NavLink & { children: { href: string; label: string }[] };
+  pathname: string;
+  active: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLLIElement>(null);
+
+  // Close on outside click
+  useEffect(() => {
+    function handler(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
   return (
-    <div className="flex items-center gap-3 text-body">
-      <a href={site.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-white transition-colors">
-        <LinkedInGlyph size={18} />
-      </a>
-      <a href={site.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white transition-colors">
-        <InstagramGlyph size={18} />
-      </a>
-      <a href={site.socials.twitter} target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="hover:text-white transition-colors">
-        <XGlyph size={18} />
-      </a>
-    </div>
+    <li ref={ref} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className={cn(
+          "relative flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-full transition-colors",
+          active ? "text-white" : "text-body hover:text-white"
+        )}
+        aria-expanded={open}
+        aria-haspopup="true"
+      >
+        {active && (
+          <motion.span
+            layoutId="nav-active-pill"
+            className="absolute inset-0 rounded-full bg-white/10"
+            transition={{ type: "spring", duration: 0.5 }}
+          />
+        )}
+        <span className="relative z-10">{link.label}</span>
+        <ChevronDown
+          size={14}
+          className={cn("relative z-10 transition-transform duration-200", open && "rotate-180")}
+        />
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            initial={{ opacity: 0, y: -8, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.96 }}
+            transition={{ duration: 0.18 }}
+             className="absolute left-0 top-full mt-2 w-48 rounded-xl border border-white/10 bg-surface shadow-2xl shadow-black/50 py-1 z-50"
+          >
+            {link.children.map((child) => (
+              <li key={child.href}>
+                <Link
+                  href={child.href}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "block px-4 py-2.5 text-sm transition-colors hover:bg-white/5",
+                    pathname === child.href ? "text-white font-semibold" : "text-body hover:text-white"
+                  )}
+                >
+                  {child.label}
+                  {child.href === "/axis-congress/ignite" && (
+                    <span className="ml-2 inline-block rounded-full bg-accent-gold/15 px-1.5 py-0.5 text-[10px] font-bold text-accent-gold">
+                      NEW
+                    </span>
+                  )}
+                </Link>
+              </li>
+            ))}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </li>
   );
 }

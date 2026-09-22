@@ -61,7 +61,7 @@ export function ContentEditorClient({
         </p>
       )}
       {status === "error" && (
-        <p className="mb-6 rounded-lg bg-red-500/10 border border-red-500/30 px-4 py-2.5 text-sm text-red-400">
+        <p className="mb-6 rounded-lg bg-ieee-red/10 border border-ieee-red/30 px-4 py-2.5 text-sm text-ieee-red">
           {errorMsg}
         </p>
       )}

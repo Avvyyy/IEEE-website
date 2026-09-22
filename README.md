@@ -73,7 +73,7 @@ The site currently ships with generated placeholder SVGs (clearly labeled "repla
 page renders correctly out of the box. Before launch, replace these via the admin dashboard or by
 editing `/content/*.json` directly:
 
-- [ ] Official IEEE Babcock SB logo (SVG + PNG, light & dark) → replace `public/images/logo-ieee-babcock.svg`
+- [ ] Official IEEE Babcock SB logo (SVG + PNG, light & dark) → replace `public/images/logo-ieee-babcock.png`
 - [ ] Executive headshots (800×800px+) → Team section in admin, or `content/team.json`
 - [ ] Event photo gallery (AXIS, Tethered, etc.) → Events / AXIS Congress sections in admin
 - [ ] Partner/sponsor logos → Partners & Sponsors section in admin

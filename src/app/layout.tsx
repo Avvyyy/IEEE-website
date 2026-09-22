@@ -57,7 +57,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: site.aboutSnippet,
       url: SITE_URL,
       siteName: site.shortName,
-      images: [{ url: "/images/placeholder-axis-banner.svg", width: 1920, height: 1080 }],
+      images: [{ url: "/images/axis-banner.png", width: 1920, height: 1080 }],
       locale: "en_US",
       type: "website",
     },
@@ -65,7 +65,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: site.branchName,
       description: site.aboutSnippet,
-      images: ["/images/placeholder-axis-banner.svg"],
+      images: ["/images/axis-banner.png"],
     },
   };
 }
@@ -77,7 +77,7 @@ function OrganizationJsonLd({ site }: { site: Awaited<ReturnType<typeof getSiteC
     name: site.branchName,
     alternateName: site.shortName,
     url: SITE_URL,
-    logo: `${SITE_URL}/images/logo-ieee-babcock.svg`,
+    logo: `${SITE_URL}/images/logo-ieee-babcock.png`,
     description: site.aboutSnippet,
     email: site.email,
     foundingDate: String(site.founded),

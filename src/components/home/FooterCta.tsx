@@ -60,7 +60,7 @@ export function FooterCta({ site }: { site: SiteConfig }) {
             <p className="text-sm text-accent-gold mb-6">You&apos;re subscribed — thanks!</p>
           )}
           {status === "error" && (
-            <p className="text-sm text-red-400 mb-6">Something went wrong. Please try again.</p>
+            <p className="text-sm text-ieee-red mb-6">Something went wrong. Please try again.</p>
           )}
 
           <a

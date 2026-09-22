@@ -3,9 +3,42 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { LayoutDashboard, LogOut, Mail, MessageSquare } from "lucide-react";
-import { ADMIN_SECTIONS } from "@/lib/admin-sections";
+import {
+  LayoutDashboard,
+  LogOut,
+  Calendar,
+  Users,
+  Newspaper,
+  Radio,
+  Handshake,
+  Briefcase,
+  FileText,
+  Mail,
+  MessageSquare,
+  Settings,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const NAV_ITEMS = [
+  { href: "/admin/events", label: "Events", icon: Calendar },
+  { href: "/admin/team", label: "Team", icon: Users },
+  { href: "/admin/news", label: "News", icon: Newspaper },
+  { href: "/admin/axis", label: "AXIS Congress", icon: Radio },
+  { href: "/admin/partners", label: "Partners", icon: Handshake },
+  { href: "/admin/opportunities", label: "Opportunities", icon: Briefcase },
+];
+
+const CONTENT_ITEMS = [
+  { href: "/admin/content/site", label: "Site Settings", icon: Settings },
+  { href: "/admin/content/stats", label: "Key Stats", icon: FileText },
+  { href: "/admin/content/pillars", label: "Focus Areas", icon: FileText },
+  { href: "/admin/content/about", label: "About Page", icon: FileText },
+];
+
+const INBOX_ITEMS = [
+  { href: "/admin/submissions", label: "Contact Submissions", icon: MessageSquare },
+  { href: "/admin/newsletter", label: "Newsletter Signups", icon: Mail },
+];
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -21,33 +54,62 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     <div className="flex min-h-screen">
       <aside className="hidden lg:flex w-64 shrink-0 flex-col border-r border-white/10 bg-surface/40 p-4">
         <Image
-          src="/images/logo-ieee-babcock.svg"
+          src="/images/logo-ieee-babcock.png"
           alt="IEEE Babcock SB"
           width={160}
           height={40}
           className="h-8 w-auto mb-8 mx-2"
         />
-        <nav className="flex-1 space-y-1">
-          <NavItem href="/admin" icon={<LayoutDashboard size={16} />} active={pathname === "/admin"}>
+        <nav className="flex-1 space-y-1 overflow-y-auto">
+          <NavItem
+            href="/admin"
+            icon={<LayoutDashboard size={16} />}
+            active={pathname === "/admin"}
+          >
             Dashboard
           </NavItem>
-          <p className="px-3 pt-4 pb-1 text-xs uppercase tracking-wider text-body/60">Content</p>
-          {ADMIN_SECTIONS.map((section) => (
+
+          <p className="px-3 pt-4 pb-1 text-xs uppercase tracking-wider text-body/60">
+            Content Management
+          </p>
+          {NAV_ITEMS.map((item) => (
             <NavItem
-              key={section.type}
-              href={`/admin/content/${section.type}`}
-              active={pathname === `/admin/content/${section.type}`}
+              key={item.href}
+              href={item.href}
+              icon={<item.icon size={16} />}
+              active={pathname === item.href}
             >
-              {section.label}
+              {item.label}
             </NavItem>
           ))}
-          <p className="px-3 pt-4 pb-1 text-xs uppercase tracking-wider text-body/60">Inbox</p>
-          <NavItem href="/admin/submissions" icon={<MessageSquare size={16} />} active={pathname === "/admin/submissions"}>
-            Contact Submissions
-          </NavItem>
-          <NavItem href="/admin/newsletter" icon={<Mail size={16} />} active={pathname === "/admin/newsletter"}>
-            Newsletter Signups
-          </NavItem>
+
+          <p className="px-3 pt-4 pb-1 text-xs uppercase tracking-wider text-body/60">
+            Site Content
+          </p>
+          {CONTENT_ITEMS.map((item) => (
+            <NavItem
+              key={item.href}
+              href={item.href}
+              icon={<item.icon size={16} />}
+              active={pathname === item.href}
+            >
+              {item.label}
+            </NavItem>
+          ))}
+
+          <p className="px-3 pt-4 pb-1 text-xs uppercase tracking-wider text-body/60">
+            Inbox
+          </p>
+          {INBOX_ITEMS.map((item) => (
+            <NavItem
+              key={item.href}
+              href={item.href}
+              icon={<item.icon size={16} />}
+              active={pathname === item.href}
+            >
+              {item.label}
+            </NavItem>
+          ))}
         </nav>
         <button
           onClick={logout}
@@ -88,7 +150,9 @@ function NavItem({
       href={href}
       className={cn(
         "flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition-colors",
-        active ? "bg-ieee-blue/20 text-white" : "text-body hover:bg-white/5 hover:text-white"
+        active
+          ? "bg-ieee-blue/20 text-white"
+          : "text-body hover:bg-white/5 hover:text-white"
       )}
     >
       {icon}
